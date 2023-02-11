@@ -2,7 +2,7 @@ WITH quarterly_volume as (
 
 SELECT 
         algorithm,
-        SUM(volume) as volume,
+        SUM(volume) as volume, //in cte every column should be named
         datepart(quarter,dt) as quarters
         
 FROM    coins c
@@ -20,7 +20,7 @@ SELECT
 FROM   coins c 
 LEFT JOIN quarterly_volume qv1 
 on c.algorithm = qv1.algorithm
-AND qv1.quarters = 1  
+AND qv1.quarters = 1   //filtering out q1 ka maal
 LEFT JOIN quarterly_volume qv2 
 on c.algorithm = qv2.algorithm
 AND qv2.quarters = 2  
